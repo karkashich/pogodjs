@@ -1,0 +1,167 @@
+body {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #222;
+    /* background-image: url('https://source.unsplash.com/1600x900/?landscape'); */
+    background-image: url('back.jpg');
+    background-size: cover;
+    font-size: 120%;
+    background-attachment: fixed;
+    margin-top: 250px;
+  }
+
+.kard { 
+  background: #000000d0; 
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin: 1em;
+  height: 343.5px;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 44px;
+    width: 44px;
+    outline: none;
+    background: #7c7c7c2b;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.4em 1em;
+    border-radius: 24px;
+    background: #7c7c7c2b;
+    color: white;
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+  }
+  
+  button:hover {
+    background: #7c7c7c6b;
+  }
+  
+  h1.temp {
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  
+  .description {
+    text-transform: capitalize;
+    margin-left: 8px;
+  }
+  
+  .weather.loading {
+    visibility: hidden;
+    max-height: 20px;
+    position: relative;
+  }
+  
+  .weather.loading:after {
+    visibility: visible;
+    content: "Загрузка...";
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+
+.upper{
+  display: inline-flex;
+}
+
+
+/* все что касается окна где пишем заметки */
+
+
+.text_card{ 
+  position: relative;
+  width: 498px;
+  height: 420px;
+  background: #000000d0;
+  border-radius: 30px; 
+  color: white;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+#addNote{
+  /* position: fixed; */
+  border-radius: 15px; 
+  background-color: #7c7c7c2b;
+  height: 250px;
+  width: 400px;
+  margin-left: 49px;
+  margin-right: 49px;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  resize: none;
+  padding: auto;
+  font-size: 110%;
+  font-family: inherit;
+  display: block;
+}
+
+#addBtn{
+  border-radius: 30px;
+  width: 400px;
+  height: 50px;
+  justify-content: center;
+  text-align: center;
+  margin-left: 49px;
+  margin-top: 25px;
+  margin-right: 49px;
+  font-size: 110%;
+}
+.under{
+  align-items: center;
+}
+.btn{
+  width: 200px;
+  background: #7c7c7c2b;
+  border-radius: 15px;
+  height: 50px;
+  font-size: 110%;
+}
+.card { 
+  background: #000000d0; 
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin: 1em;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+

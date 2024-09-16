@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Погода</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #222;
+    /* background-image: url('https://source.unsplash.com/1600x900/?landscape'); */
+    background-image: url('back.jpg');
+    background-size: cover;
+    font-size: 120%;
+    background-attachment: fixed;
+    margin-top: 250px;
+  }
+
+.kard { 
+  background: #000000d0; 
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin: 1em;
+  height: 343.5px;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 44px;
+    width: 44px;
+    outline: none;
+    background: #7c7c7c2b;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.4em 1em;
+    border-radius: 24px;
+    background: #7c7c7c2b;
+    color: white;
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+  }
+  
+  button:hover {
+    background: #7c7c7c6b;
+  }
+  
+  h1.temp {
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  
+  .description {
+    text-transform: capitalize;
+    margin-left: 8px;
+  }
+  
+  .weather.loading {
+    visibility: hidden;
+    max-height: 20px;
+    position: relative;
+  }
+  
+  .weather.loading:after {
+    visibility: visible;
+    content: "Загрузка...";
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+
+.upper{
+  display: inline-flex;
+}
+
+
+/* все что касается окна где пишем заметки */
+
+
+.text_card{ 
+  position: relative;
+  width: 498px;
+  height: 420px;
+  background: #000000d0;
+  border-radius: 30px; 
+  color: white;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+#addNote{
+  /* position: fixed; */
+  border-radius: 15px; 
+  background-color: #7c7c7c2b;
+  height: 250px;
+  width: 400px;
+  margin-left: 49px;
+  margin-right: 49px;
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  resize: none;
+  padding: auto;
+  font-size: 110%;
+  font-family: inherit;
+  display: block;
+}
+
+#addBtn{
+  border-radius: 30px;
+  width: 400px;
+  height: 50px;
+  justify-content: center;
+  text-align: center;
+  margin-left: 49px;
+  margin-top: 25px;
+  margin-right: 49px;
+  font-size: 110%;
+}
+.under{
+  align-items: center;
+}
+.btn{
+  width: 200px;
+  background: #7c7c7c2b;
+  border-radius: 15px;
+  height: 50px;
+  font-size: 110%;
+}
+.card { 
+  background: #000000d0; 
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin: 1em;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+
+</style>
+
+<body background="back.jpg">
+  <div class="upper">
+    <div class="kard" >
+      <div class="search">
+        <input type="text" class="search-bar" placeholder="Поиск">
+        <button><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
+            width="1.5em" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
+            </path>
+          </svg></button>
+      </div>
+      <div class="weather loading">
+        <h2 class="city">Погода в Северодвинске</h2>
+        <h1 class="temp">-9°C</h1>
+        <div class="flex">
+          <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
+          <div class="description">Облачно</div>
+        </div>
+        <div class="humidity">Влажность: 60%</div>
+        <div class="feels_like">Ощущается как: -15°C</div>
+        <div class="wind">Скорость Ветра: 6.2 Км/ч</div>
+      </div>
+    </div>
+
+  <!-- <div class="wrapper">
+    <div class="item item-a">A</div>
+    <div class="item item-b">B</div>
+    <div class="item item-c">C</div>
+</div> -->
+
+	
+	<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script> -->
+	<!-- <script src="./script1.js"></script> -->
+
+</body>
+
+<script>
+  let weather = {
+    apiKey: "16e6d89d1a356ebab71e8feb97dc49c0",
+    fetchWeather: function (city) {
+      fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+          city +
+          "&units=metric&lang=ru&appid=" +
+          this.apiKey
+      )
+        .then((response) => {
+          if (!response.ok) {
+            alert("Данные не найдены.");
+            throw new Error("Данные не найдены.");
+          }
+          return response.json();
+        })
+        .then((data) => this.displayWeather(data));
+        console.log(weather);
+    },
+
+
+    displayWeather: function (data) {
+
+      const { name } = data;
+      const { icon, description } = data.weather[0];
+      const { temp, humidity, feels_like } = data.main;
+      const { speed } = data.wind;
+    //   const {feels_like} = data.main;
+      console.log(1, data);//инфа по городу
+
+      document.querySelector(".city").innerText = "Погода в " + name;
+      document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
+      document.querySelector(".description").innerText = description;
+      document.querySelector(".temp").innerText = temp + "°C";
+      document.querySelector(".humidity").innerText = "Влажность: " + humidity + "%";
+      document.querySelector(".feels_like").innerText = "Ощущается как: " + feels_like + "°C";
+      document.querySelector(".wind").innerText = "Скорость ветра: " + speed + " Км/ч";
+      document.querySelector(".weather").classList.remove("loading");
+
+      // document.body.style.backgroundImage ="url('https://source.unsplash.com/1920x1080/?" + name + "')";
+      document.body.style.backgroundImage = src("back.jpg")
+    },
+
+    search: function () {
+      this.fetchWeather(document.querySelector(".search-bar").value);
+    },
+
+  };
+  
+
+  document.querySelector(".search button").addEventListener("click", function () {
+    weather.search();
+  });
+  
+  document
+    .querySelector(".search-bar")
+    .addEventListener("keyup", function (event) {
+      if (event.key == "Enter") {
+        weather.search();
+      }
+    });
+  
+weather.fetchWeather("Северодвинск");
+</script>
+
+</html>
